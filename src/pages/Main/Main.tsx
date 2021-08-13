@@ -1,9 +1,10 @@
 import React from 'react'
+import LeftMain from '../../components/LeftMain'
 
 function Main() {
     return (
         <div className="center">
-            main
+            <LeftMain />
         </div>
     )
 }

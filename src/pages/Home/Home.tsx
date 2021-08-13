@@ -5,6 +5,7 @@ import {
     SmileOutlined,
     SyncOutlined,
     LoadingOutlined,
+    SearchOutlined
 } from '@ant-design/icons';
 import { Switch,HashRouter, Route, Link, Redirect } from "react-router-dom";
 import './home.css'
@@ -62,7 +63,7 @@ const Home = (props:any) => {
                                 })}
                             </div>
                             <div className="search_box">
-                                <LoadingOutlined />
+                                <SearchOutlined />
                             </div>
                         </div>
                     </div>
