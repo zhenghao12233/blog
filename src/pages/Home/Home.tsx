@@ -15,6 +15,7 @@ import FeedBack from '../FeedBack/FeedBack';
 // git push https://github.com/zhenghao12233/blog.git master
 
 const Home = (props:any) => {
+    console.log("nihao")
     const [flag, setFlag] = useState(true)
     const [tabIndex,setIndex] = useState(0)
     const [tab,setTab] = useState([
