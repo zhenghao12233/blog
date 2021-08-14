@@ -9,6 +9,7 @@
     position: fixed;
     line-height: 50px;
     color: #fff;
+    z-index: 5;
 }
 .home_header > div  {
     height: 100%;
