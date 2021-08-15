@@ -1,0 +1,25 @@
+.about_center {
+    background: #fff;
+    border-radius: 6px;
+    padding: 30px;
+    box-sizing: border-box;
+}
+.about_center .thumb{
+    text-align: center;
+}
+.about_center .thumb img {
+    width: 100px;
+    height: 100px;
+    border-radius: 100px ;
+}
+.about_center .about_item {
+    text-align: center;
+    line-height: 45px;
+}
+.about_center .about_blog{
+    background: #F6F6F4;
+    color: #0609308a;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 4px;
+}

@@ -5,7 +5,7 @@ import RightMain from '../../components/RightMain/RightMain'
 
 function Main() {
     return (
-        <div className="center" style={{overflow: 'hidden'}}>
+        <div >
             <LeftMain />
             <RightMain/>
         </div>
