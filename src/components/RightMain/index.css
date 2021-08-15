@@ -1,6 +1,6 @@
 .right_main {
     float: right;
-    width: 20%;
+    width: 23%;
 }
 @media screen and (max-width: 1050px) {
     .right_main {
@@ -32,4 +32,50 @@
 }
 .right_main .introduce_box .btn_box .btn {
     margin: 0 10px ;
+}
+
+.click_rank_box {
+    background: #fff;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 20px;
+    margin-top: 20px;
+}
+.click_rank_box .rank_title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.click_rank_box .rank_title h1 {
+    margin-bottom: 0;
+}
+.click_rank_box .rank_title span.squre {
+    height: 2px;
+    width: 30px;
+    background: #333;
+    margin: 0 10px;
+}
+.click_rank_box .rank_item {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+   
+}
+.click_rank_box .rank_item span:nth-child(1) {
+    height: 20px;
+    width: 20px;
+    text-align: center;
+    line-height: 20px;
+    flex-shrink: 0;
+    margin-right: 5px;
+    color: #fff;
+    background: #B1B1B1;
+}
+.click_rank_box .rank_item span:nth-child(2) {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+} 
+.click_rank_box .rank_item:nth-of-type(-n + 4) span:nth-child(1){
+    background: rgb(255, 163, 101);
 }

@@ -46,9 +46,53 @@ function RightMain() {
             </div>
 
             {/* 排行榜 */}
-            <div>排行榜</div>
-            {/* 推荐 */}
-            <div>推荐</div>
+            <div className="click_rank_box">
+                <div className="rank_title">
+                    <span className="squre"></span>
+                    <h1>点击排行</h1>
+                    <span className="squre"></span>
+                </div>
+                <div className="rank_item">
+                    <span>1</span>
+                    <span>computed和watchcomputed和watchcomputed和watch</span>
+                </div>
+                <div className="rank_item">
+                    <span>1</span>
+                    <span>computed和watchcomputed和watchcomputed和watch</span>
+                </div>
+                <div className="rank_item">
+                    <span>1</span>
+                    <span>computed和watchcomputed和watchcomputed和watch</span>
+                </div>
+                <div className="rank_item">
+                    <span>1</span>
+                    <span>computed和watchcomputed和watchcomputed和watch</span>
+                </div>
+                <div className="rank_item">
+                    <span>1</span>
+                    <span>computed和watchcomputed和watchcomputed和watch</span>
+                </div>
+                <div className="rank_item">
+                    <span>1</span>
+                    <span>computed和watchcomputed和watchcomputed和watch</span>
+                </div>
+                <div className="rank_item">
+                    <span>1</span>
+                    <span>computed和watchcomputed和watchcomputed和watch</span>
+                </div>
+                <div className="rank_item">
+                    <span>1</span>
+                    <span>computed和watchcomputed和watchcomputed和watch</span>
+                </div>
+                <div className="rank_item">
+                    <span>1</span>
+                    <span>computed和watchcomputed和watchcomputed和watch</span>
+                </div>
+                <div className="rank_item">
+                    <span>1</span>
+                    <span>computed和watchcomputed和watchcomputed和watch</span>
+                </div>
+            </div>
         </div>
     )
 }

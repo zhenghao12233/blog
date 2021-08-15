@@ -2,7 +2,8 @@ import React, { useEffect, useState, Component } from 'react';
 import './index.css'
 import {
     LeftOutlined,
-    RightOutlined
+    RightOutlined,
+    SmileOutlined
 } from '@ant-design/icons';
 
 class LeftMain extends Component<any, any> {
@@ -26,6 +27,12 @@ class LeftMain extends Component<any, any> {
 
     componentDidMount() {
         this.autoSwiper()
+        // 类似组件监听滚动
+        // window.addEventListener("scroll",this.test)
+    }
+    test = (e:any) => {
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        console.log("滚动距离" + scrollTop);
     }
 
     // 自动转换
@@ -87,13 +94,13 @@ class LeftMain extends Component<any, any> {
         this.autoSwiper()
     }
 
-    toggleSwiper = (index:number) => {
+    toggleSwiper = (index: number) => {
         console.log(index)
         clearInterval(this.state.timer)
         this.setState({
             timer: null
         })
-        let newRotate:number = (index - this.state.swiperIndex) * 90
+        let newRotate: number = (index - this.state.swiperIndex) * 90
         this.setState({
             swiperIndex: index,
             rotateDeg: this.state.rotateDeg + newRotate
@@ -129,10 +136,10 @@ class LeftMain extends Component<any, any> {
                         <RightOutlined onClick={this.nextSwiper} />
                     </div>
                     <div className="squre-box">
-                        <span className={this.state.swiperIndex == 0 ? 'squre active' : 'squre'} onClick={ () => this.toggleSwiper(0)}></span>
-                        <span className={this.state.swiperIndex == 1 ? 'squre active' : 'squre'} onClick={ () => this.toggleSwiper(1)}></span>
-                        <span className={this.state.swiperIndex == 2 ? 'squre active' : 'squre'} onClick={ () => this.toggleSwiper(2)}></span>
-                        <span className={this.state.swiperIndex == 3 ? 'squre active' : 'squre'} onClick={ () => this.toggleSwiper(3)}></span>
+                        <span className={this.state.swiperIndex == 0 ? 'squre active' : 'squre'} onClick={() => this.toggleSwiper(0)}></span>
+                        <span className={this.state.swiperIndex == 1 ? 'squre active' : 'squre'} onClick={() => this.toggleSwiper(1)}></span>
+                        <span className={this.state.swiperIndex == 2 ? 'squre active' : 'squre'} onClick={() => this.toggleSwiper(2)}></span>
+                        <span className={this.state.swiperIndex == 3 ? 'squre active' : 'squre'} onClick={() => this.toggleSwiper(3)}></span>
                     </div>
                 </div>
                 {/* 小型图文 */}
@@ -152,7 +159,346 @@ class LeftMain extends Component<any, any> {
                         </li>
                     </ul>
                 </div>
-                {/* 技术分享 + 部分算法 */}
+                {/* 技术分享 */}
+                <div className="skill_share_box skill_content_box">
+                    <div className="content_title">技术分享</div>
+                    <ul>
+                        <li>
+                            <img className="thumb" src="https://img0.baidu.com/it/u=1783627040,2442271822&fm=26&fmt=auto&gp=0.jpg" alt="" />
+                            <b className="title">几个优雅的JavaScript运算符</b>
+                            <h4 className="content">
+                                ECMAScript发展进程中，会有很多功能的更新，比如销毁，箭头功能，模块，它们极大的改变JavaScript编写方式，可能有些人喜欢，有些人不喜欢，但像每个新功能一样，我们最终会习惯它们。新版本的ECMAScript引入了三个新的逻辑赋值运算符：空运算符，AND和OR运算符，这些运算符的出现，也是希望让我们的代码更干净简洁，下面分享几个优雅的JavaScript运算符使用技巧
+                            </h4>
+                            <span className="like">
+                                <SmileOutlined style={{ color: 'rgb(255, 186, 95)' }} />
+                                <span>38</span>
+                            </span>
+                        </li>
+                        <li>
+                            <img className="thumb" src="https://img0.baidu.com/it/u=1783627040,2442271822&fm=26&fmt=auto&gp=0.jpg" alt="" />
+                            <b className="title">几个优雅的JavaScript运算符</b>
+                            <h4 className="content">
+                                ECMAScript发展进程中，会有很多功能的更新，比如销毁，箭头功能，模块，它们极大的改变JavaScript编写方式，可能有些人喜欢，有些人不喜欢，但像每个新功能一样，我们最终会习惯它们。新版本的ECMAScript引入了三个新的逻辑赋值运算符：空运算符，AND和OR运算符，这些运算符的出现，也是希望让我们的代码更干净简洁，下面分享几个优雅的JavaScript运算符使用技巧
+                            </h4>
+                            <span className="like">
+                                <SmileOutlined style={{ color: 'rgb(255, 186, 95)' }} />
+                                <span>38</span>
+                            </span>
+                        </li>
+                        <li>
+                            <img className="thumb" src="https://img0.baidu.com/it/u=1783627040,2442271822&fm=26&fmt=auto&gp=0.jpg" alt="" />
+                            <b className="title">几个优雅的JavaScript运算符</b>
+                            <h4 className="content">
+                                ECMAScript发展进程中，会有很多功能的更新，比如销毁，箭头功能，模块，它们极大的改变JavaScript编写方式，可能有些人喜欢，有些人不喜欢，但像每个新功能一样，我们最终会习惯它们。新版本的ECMAScript引入了三个新的逻辑赋值运算符：空运算符，AND和OR运算符，这些运算符的出现，也是希望让我们的代码更干净简洁，下面分享几个优雅的JavaScript运算符使用技巧
+                            </h4>
+                            <span className="like">
+                                <SmileOutlined style={{ color: 'rgb(255, 186, 95)' }} />
+                                <span>38</span>
+                            </span>
+                        </li>
+                        <li>
+                            <img className="thumb" src="https://img0.baidu.com/it/u=1783627040,2442271822&fm=26&fmt=auto&gp=0.jpg" alt="" />
+                            <b className="title">几个优雅的JavaScript运算符</b>
+                            <h4 className="content">
+                                ECMAScript发展进程中，会有很多功能的更新，比如销毁，箭头功能，模块，它们极大的改变JavaScript编写方式，可能有些人喜欢，有些人不喜欢，但像每个新功能一样，我们最终会习惯它们。新版本的ECMAScript引入了三个新的逻辑赋值运算符：空运算符，AND和OR运算符，这些运算符的出现，也是希望让我们的代码更干净简洁，下面分享几个优雅的JavaScript运算符使用技巧
+                            </h4>
+                            <span className="like">
+                                <SmileOutlined style={{ color: 'rgb(255, 186, 95)' }} />
+                                <span>38</span>
+                            </span>
+                        </li>
+                        <li>
+                            <img className="thumb" src="https://img0.baidu.com/it/u=1783627040,2442271822&fm=26&fmt=auto&gp=0.jpg" alt="" />
+                            <b className="title">几个优雅的JavaScript运算符</b>
+                            <h4 className="content">
+                                ECMAScript发展进程中，会有很多功能的更新，比如销毁，箭头功能，模块，它们极大的改变JavaScript编写方式，可能有些人喜欢，有些人不喜欢，但像每个新功能一样，我们最终会习惯它们。新版本的ECMAScript引入了三个新的逻辑赋值运算符：空运算符，AND和OR运算符，这些运算符的出现，也是希望让我们的代码更干净简洁，下面分享几个优雅的JavaScript运算符使用技巧
+                            </h4>
+                            <span className="like">
+                                <SmileOutlined style={{ color: 'rgb(255, 186, 95)' }} />
+                                <span>38</span>
+                            </span>
+                        </li>
+                        <li>
+                            <img className="thumb" src="https://img0.baidu.com/it/u=1783627040,2442271822&fm=26&fmt=auto&gp=0.jpg" alt="" />
+                            <b className="title">几个优雅的JavaScript运算符</b>
+                            <h4 className="content">
+                                ECMAScript发展进程中，会有很多功能的更新，比如销毁，箭头功能，模块，它们极大的改变JavaScript编写方式，可能有些人喜欢，有些人不喜欢，但像每个新功能一样，我们最终会习惯它们。新版本的ECMAScript引入了三个新的逻辑赋值运算符：空运算符，AND和OR运算符，这些运算符的出现，也是希望让我们的代码更干净简洁，下面分享几个优雅的JavaScript运算符使用技巧
+                            </h4>
+                            <span className="like">
+                                <SmileOutlined style={{ color: 'rgb(255, 186, 95)' }} />
+                                <span>38</span>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                {/* 算法解析 */}
+                <div className="skill_share_box skill_content_box">
+                    <div className="content_title">算法解析</div>
+                    <ul>
+                        <li>
+                            <img className="thumb" src="https://img0.baidu.com/it/u=1783627040,2442271822&fm=26&fmt=auto&gp=0.jpg" alt="" />
+                            <b className="title">几个优雅的JavaScript运算符</b>
+                            <h4 className="content">
+                                ECMAScript发展进程中，会有很多功能的更新，比如销毁，箭头功能，模块，它们极大的改变JavaScript编写方式，可能有些人喜欢，有些人不喜欢，但像每个新功能一样，我们最终会习惯它们。新版本的ECMAScript引入了三个新的逻辑赋值运算符：空运算符，AND和OR运算符，这些运算符的出现，也是希望让我们的代码更干净简洁，下面分享几个优雅的JavaScript运算符使用技巧
+                            </h4>
+                            <span className="like">
+                                <SmileOutlined style={{ color: 'rgb(255, 186, 95)' }} />
+                                <span>38</span>
+                            </span>
+                        </li>
+                        <li>
+                            <img className="thumb" src="https://img0.baidu.com/it/u=1783627040,2442271822&fm=26&fmt=auto&gp=0.jpg" alt="" />
+                            <b className="title">几个优雅的JavaScript运算符</b>
+                            <h4 className="content">
+                                ECMAScript发展进程中，会有很多功能的更新，比如销毁，箭头功能，模块，它们极大的改变JavaScript编写方式，可能有些人喜欢，有些人不喜欢，但像每个新功能一样，我们最终会习惯它们。新版本的ECMAScript引入了三个新的逻辑赋值运算符：空运算符，AND和OR运算符，这些运算符的出现，也是希望让我们的代码更干净简洁，下面分享几个优雅的JavaScript运算符使用技巧
+                            </h4>
+                            <span className="like">
+                                <SmileOutlined style={{ color: 'rgb(255, 186, 95)' }} />
+                                <span>38</span>
+                            </span>
+                        </li>
+                        <li>
+                            <img className="thumb" src="https://img0.baidu.com/it/u=1783627040,2442271822&fm=26&fmt=auto&gp=0.jpg" alt="" />
+                            <b className="title">几个优雅的JavaScript运算符</b>
+                            <h4 className="content">
+                                ECMAScript发展进程中，会有很多功能的更新，比如销毁，箭头功能，模块，它们极大的改变JavaScript编写方式，可能有些人喜欢，有些人不喜欢，但像每个新功能一样，我们最终会习惯它们。新版本的ECMAScript引入了三个新的逻辑赋值运算符：空运算符，AND和OR运算符，这些运算符的出现，也是希望让我们的代码更干净简洁，下面分享几个优雅的JavaScript运算符使用技巧
+                            </h4>
+                            <span className="like">
+                                <SmileOutlined style={{ color: 'rgb(255, 186, 95)' }} />
+                                <span>38</span>
+                            </span>
+                        </li>
+                        <li>
+                            <img className="thumb" src="https://img0.baidu.com/it/u=1783627040,2442271822&fm=26&fmt=auto&gp=0.jpg" alt="" />
+                            <b className="title">几个优雅的JavaScript运算符</b>
+                            <h4 className="content">
+                                ECMAScript发展进程中，会有很多功能的更新，比如销毁，箭头功能，模块，它们极大的改变JavaScript编写方式，可能有些人喜欢，有些人不喜欢，但像每个新功能一样，我们最终会习惯它们。新版本的ECMAScript引入了三个新的逻辑赋值运算符：空运算符，AND和OR运算符，这些运算符的出现，也是希望让我们的代码更干净简洁，下面分享几个优雅的JavaScript运算符使用技巧
+                            </h4>
+                            <span className="like">
+                                <SmileOutlined style={{ color: 'rgb(255, 186, 95)' }} />
+                                <span>38</span>
+                            </span>
+                        </li>
+                        <li>
+                            <img className="thumb" src="https://img0.baidu.com/it/u=1783627040,2442271822&fm=26&fmt=auto&gp=0.jpg" alt="" />
+                            <b className="title">几个优雅的JavaScript运算符</b>
+                            <h4 className="content">
+                                ECMAScript发展进程中，会有很多功能的更新，比如销毁，箭头功能，模块，它们极大的改变JavaScript编写方式，可能有些人喜欢，有些人不喜欢，但像每个新功能一样，我们最终会习惯它们。新版本的ECMAScript引入了三个新的逻辑赋值运算符：空运算符，AND和OR运算符，这些运算符的出现，也是希望让我们的代码更干净简洁，下面分享几个优雅的JavaScript运算符使用技巧
+                            </h4>
+                            <span className="like">
+                                <SmileOutlined style={{ color: 'rgb(255, 186, 95)' }} />
+                                <span>38</span>
+                            </span>
+                        </li>
+                        <li>
+                            <img className="thumb" src="https://img0.baidu.com/it/u=1783627040,2442271822&fm=26&fmt=auto&gp=0.jpg" alt="" />
+                            <b className="title">几个优雅的JavaScript运算符</b>
+                            <h4 className="content">
+                                ECMAScript发展进程中，会有很多功能的更新，比如销毁，箭头功能，模块，它们极大的改变JavaScript编写方式，可能有些人喜欢，有些人不喜欢，但像每个新功能一样，我们最终会习惯它们。新版本的ECMAScript引入了三个新的逻辑赋值运算符：空运算符，AND和OR运算符，这些运算符的出现，也是希望让我们的代码更干净简洁，下面分享几个优雅的JavaScript运算符使用技巧
+                            </h4>
+                            <span className="like">
+                                <SmileOutlined style={{ color: 'rgb(255, 186, 95)' }} />
+                                <span>38</span>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                {/* 程序人生 */}
+                <div className="process_life_box skill_content_box">
+                    <div className="content_title">程序人生</div>
+                    <ul>
+                        <li>
+                            <div className="top_content">
+                                <img src="https://img0.baidu.com/it/u=1783627040,2442271822&fm=26&fmt=auto&gp=0.jpg" alt="" />
+                                <div className="content_info">
+                                    <span className="abstract">Computed本质是一个具备缓存的watcher，依赖的属性发生变化就会更新视图。 适用于计算比较消耗性能的计算场景。当表达式过于复杂时，在模板中放入过多逻辑会让模板难以维护，可以将复杂的逻辑放入计算属性中处理。</span>
+                                    <div>
+                                        <span>2021-08-15</span>
+                                        <span>
+                                            <SmileOutlined style={{ marginRight: '5px' }} />
+                                            20
+                                        </span>
+                                        <span>
+                                            <SmileOutlined style={{ marginRight: '5px' }} />
+                                            23
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div className="top_content">
+                                <img src="https://img0.baidu.com/it/u=1783627040,2442271822&fm=26&fmt=auto&gp=0.jpg" alt="" />
+                                <div className="content_info">
+                                    <span className="abstract">Computed本质是一个具备缓存的watcher，依赖的属性发生变化就会更新视图。 适用于计算比较消耗性能的计算场景。当表达式过于复杂时，在模板中放入过多逻辑会让模板难以维护，可以将复杂的逻辑放入计算属性中处理。</span>
+                                    <div>
+                                        <span>2021-08-15</span>
+                                        <span>
+                                            <SmileOutlined style={{ marginRight: '5px' }} />
+                                            20
+                                        </span>
+                                        <span>
+                                            <SmileOutlined style={{ marginRight: '5px' }} />
+                                            23
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div className="top_content">
+                                <img src="https://img0.baidu.com/it/u=1783627040,2442271822&fm=26&fmt=auto&gp=0.jpg" alt="" />
+                                <div className="content_info">
+                                    <span className="abstract">Computed本质是一个具备缓存的watcher，依赖的属性发生变化就会更新视图。 适用于计算比较消耗性能的计算场景。当表达式过于复杂时，在模板中放入过多逻辑会让模板难以维护，可以将复杂的逻辑放入计算属性中处理。</span>
+                                    <div>
+                                        <span>2021-08-15</span>
+                                        <span>
+                                            <SmileOutlined style={{ marginRight: '5px' }} />
+                                            20
+                                        </span>
+                                        <span>
+                                            <SmileOutlined style={{ marginRight: '5px' }} />
+                                            23
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div className="top_content">
+                                <img src="https://img0.baidu.com/it/u=1783627040,2442271822&fm=26&fmt=auto&gp=0.jpg" alt="" />
+                                <div className="content_info">
+                                    <span className="abstract">Computed本质是一个具备缓存的watcher，依赖的属性发生变化就会更新视图。 适用于计算比较消耗性能的计算场景。当表达式过于复杂时，在模板中放入过多逻辑会让模板难以维护，可以将复杂的逻辑放入计算属性中处理。</span>
+                                    <div>
+                                        <span>2021-08-15</span>
+                                        <span>
+                                            <SmileOutlined style={{ marginRight: '5px' }} />
+                                            20
+                                        </span>
+                                        <span>
+                                            <SmileOutlined style={{ marginRight: '5px' }} />
+                                            23
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div className="top_content">
+                                <img src="https://img0.baidu.com/it/u=1783627040,2442271822&fm=26&fmt=auto&gp=0.jpg" alt="" />
+                                <div className="content_info">
+                                    <span className="abstract">Computed本质是一个具备缓存的watcher，依赖的属性发生变化就会更新视图。 适用于计算比较消耗性能的计算场景。当表达式过于复杂时，在模板中放入过多逻辑会让模板难以维护，可以将复杂的逻辑放入计算属性中处理。</span>
+                                    <div>
+                                        <span>2021-08-15</span>
+                                        <span>
+                                            <SmileOutlined style={{ marginRight: '5px' }} />
+                                            20
+                                        </span>
+                                        <span>
+                                            <SmileOutlined style={{ marginRight: '5px' }} />
+                                            23
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div className="top_content">
+                                <img src="https://img0.baidu.com/it/u=1783627040,2442271822&fm=26&fmt=auto&gp=0.jpg" alt="" />
+                                <div className="content_info">
+                                    <span className="abstract">Computed本质是一个具备缓存的watcher，依赖的属性发生变化就会更新视图。 适用于计算比较消耗性能的计算场景。当表达式过于复杂时，在模板中放入过多逻辑会让模板难以维护，可以将复杂的逻辑放入计算属性中处理。</span>
+                                    <div>
+                                        <span>2021-08-15</span>
+                                        <span>
+                                            <SmileOutlined style={{ marginRight: '5px' }} />
+                                            20
+                                        </span>
+                                        <span>
+                                            <SmileOutlined style={{ marginRight: '5px' }} />
+                                            23
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div className="top_content">
+                                <img src="https://img0.baidu.com/it/u=1783627040,2442271822&fm=26&fmt=auto&gp=0.jpg" alt="" />
+                                <div className="content_info">
+                                    <span className="abstract">Computed本质是一个具备缓存的watcher，依赖的属性发生变化就会更新视图。 适用于计算比较消耗性能的计算场景。当表达式过于复杂时，在模板中放入过多逻辑会让模板难以维护，可以将复杂的逻辑放入计算属性中处理。</span>
+                                    <div>
+                                        <span>2021-08-15</span>
+                                        <span>
+                                            <SmileOutlined style={{ marginRight: '5px' }} />
+                                            20
+                                        </span>
+                                        <span>
+                                            <SmileOutlined style={{ marginRight: '5px' }} />
+                                            23
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div className="top_content">
+                                <img src="https://img0.baidu.com/it/u=1783627040,2442271822&fm=26&fmt=auto&gp=0.jpg" alt="" />
+                                <div className="content_info">
+                                    <span className="abstract">Computed本质是一个具备缓存的watcher，依赖的属性发生变化就会更新视图。 适用于计算比较消耗性能的计算场景。当表达式过于复杂时，在模板中放入过多逻辑会让模板难以维护，可以将复杂的逻辑放入计算属性中处理。</span>
+                                    <div>
+                                        <span>2021-08-15</span>
+                                        <span>
+                                            <SmileOutlined style={{ marginRight: '5px' }} />
+                                            20
+                                        </span>
+                                        <span>
+                                            <SmileOutlined style={{ marginRight: '5px' }} />
+                                            23
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div className="top_content">
+                                <img src="https://img0.baidu.com/it/u=1783627040,2442271822&fm=26&fmt=auto&gp=0.jpg" alt="" />
+                                <div className="content_info">
+                                    <span className="abstract">Computed本质是一个具备缓存的watcher，依赖的属性发生变化就会更新视图。 适用于计算比较消耗性能的计算场景。当表达式过于复杂时，在模板中放入过多逻辑会让模板难以维护，可以将复杂的逻辑放入计算属性中处理。</span>
+                                    <div>
+                                        <span>2021-08-15</span>
+                                        <span>
+                                            <SmileOutlined style={{ marginRight: '5px' }} />
+                                            20
+                                        </span>
+                                        <span>
+                                            <SmileOutlined style={{ marginRight: '5px' }} />
+                                            23
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div className="top_content">
+                                <img src="https://img0.baidu.com/it/u=1783627040,2442271822&fm=26&fmt=auto&gp=0.jpg" alt="" />
+                                <div className="content_info">
+                                    <span className="abstract">Computed本质是一个具备缓存的watcher，依赖的属性发生变化就会更新视图。 适用于计算比较消耗性能的计算场景。当表达式过于复杂时，在模板中放入过多逻辑会让模板难以维护，可以将复杂的逻辑放入计算属性中处理。</span>
+                                    <div>
+                                        <span>2021-08-15</span>
+                                        <span>
+                                            <SmileOutlined style={{ marginRight: '5px' }} />
+                                            20
+                                        </span>
+                                        <span>
+                                            <SmileOutlined style={{ marginRight: '5px' }} />
+                                            23
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         )
     }

@@ -99,6 +99,9 @@
     opacity: 1;
 }
 
+/* 
+    小型图文
+*/
 .swiper_article {
     float: right;
     width: 30%;
@@ -118,6 +121,7 @@
     text-align: center;
     line-height: 125px;
     overflow: hidden;
+    border-radius: 4px;
 }
 .swiper_article ul li span {
     z-index: 3;
@@ -183,5 +187,108 @@
     }
     .swiper_article ul li:nth-child(2) {
         /* margin-left: 2%; */
+    }
+ }
+
+ /* 
+    技术分享
+ */
+ .skill_content_box {
+    width: 100%;
+    float: left;
+    padding-bottom: 10px;
+    margin: 20px 0 0;
+    background: #fff;
+    border-radius: 4px;
+ }
+ .skill_content_box .content_title {
+    margin: 10px;
+    width: 80px;
+    text-align: center;
+    transition: all .5s;
+    color: #484848;
+    border-bottom: 3px solid rgb(58, 58, 58);
+ }
+ .skill_content_box > ul {
+     margin: 10px;
+ }
+ .skill_content_box > ul li {
+     float: left;
+     padding: 2.2%;
+     width: 28.4%;
+     border: 1px solid #eee;
+     box-sizing: content-box;
+ }
+ .skill_content_box > ul li img {
+     height: 100px;
+     width: 100%;
+     border-radius: 6px;
+ }
+ .skill_content_box > ul li .title {
+     display: block;
+     width: 100%;
+     white-space: nowrap;
+     overflow: hidden;
+     text-overflow: ellipsis;
+     margin-top: 10px;
+ }
+ .skill_content_box > ul li .content{
+    display:-webkit-box;
+    -webkit-line-clamp:3;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+    font-size: 14px;
+    color: #999;
+ }
+ .skill_content_box > ul li .like {
+     float: right;
+ }
+ .skill_content_box > ul li .like span {
+     margin-left: 5px;
+     color: rgb(99, 99, 99);
+ }
+ .process_life_box > ul li {
+     width: 100%;
+     box-sizing: border-box;
+ }
+ .process_life_box > ul li .top_content > img{
+    float: left;
+    width: 23%;
+    margin-right: 10px;
+ }
+ .process_life_box > ul li .top_content > div.content_info{
+    /* float: left; */
+ }
+ .process_life_box > ul li .top_content > div.content_info > div {
+     margin-top: 15px;
+ }
+ .process_life_box > ul li .top_content > div.content_info > div span:nth-child(1){
+    float: left;
+    
+ }
+ .process_life_box > ul li .top_content > div.content_info > div span:nth-child( n + 2 ){
+    float: right;
+    vertical-align: middle;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+ }
+@media screen and (max-width: 480px) {
+    .skill_content_box > ul li img {
+        height: 70px;
+    }
+}
+ @media screen and (max-width: 375px) {
+    .skill_content_box > ul li {
+        width: 45%;
+    }
+    .process_life_box > ul li {
+        width: 100%;
+    }
+    .skill_content_box > ul li img {
+        height: 86px;
+    }
+    .process_life_box > ul li img {
+       height: 60px;
     }
  }

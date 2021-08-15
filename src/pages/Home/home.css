@@ -58,6 +58,24 @@
    background: rgb(74, 203, 235);
 }
 
+.footer {
+    margin-top: 20px;
+    background: #373D41;
+    padding: 20px;
+    color: #fff;
+    text-align: center;
+}
+.footer .footer_introduce {
+  display: flex;
+  align-items: center;justify-content: center;
+  margin-bottom: 20px;
+  
+}
+.footer .footer_introduce img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+}
 
 @media screen and (max-width: 1200px) {
   
@@ -73,4 +91,13 @@
     .home_header .home_header_right .content_box .item{
         margin: 0 5px;
     }
+    .footer .footer_introduce img {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 10px;
+    }
+    
+
   }
+
+ 
