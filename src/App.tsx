@@ -11,7 +11,7 @@ function App() {
   return (
     <HashRouter>
       {/* <Life {...obj}></Life> */}
-
+      
       <Switch>
         {/* <Route path="/" exact render={() => <Redirect to="/comp1"/> } /> */}
         {/* <Route path="/life" {...obj} component={Life}></Route>

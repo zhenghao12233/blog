@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Popover, Input, Row, Col } from 'antd'
+import { Popover, Input, Row, Col, Drawer } from 'antd'
 import {
     HomeOutlined,
     SettingFilled,
@@ -33,7 +33,8 @@ const Home = (props: any) => {
         { id: 4, name: '关于我', url: '/about', choose: false },
         // { id: 0, name: '留言', url: '/feedback', choose: false }
     ])
-    const [ slideSearch,setSlideSearch ] = useState(false)
+    const [slideSearch, setSlideSearch] = useState(false)
+    const [visible, setVisible] = useState(false)
 
     const content = (
         <img src="https://img0.baidu.com/it/u=1783627040,2442271822&fm=26&fmt=auto&gp=0.jpg" alt="" />
@@ -67,17 +68,46 @@ const Home = (props: any) => {
         props.history.push(tab[index].url)
     }
 
+    const jumpDrawerTab = (index:number) => {
+        window.scroll(0,0)
+        setIndex(index)
+        props.history.push(tab[index].url)
+    }
+
     const slideSearchFun = () => {
         console.log(11)
         setSlideSearch(!slideSearch)
     }
 
-    const onSearch = (e:any) => {
+    const onSearch = (e: any) => {
         console.log(e)
+    }
+
+    const onClose = () => {
+        setVisible(false)
+    }
+
+    const drawerVisible = () => {
+        setVisible(true)
     }
 
     return (
         <div>
+            <Drawer
+                title=""
+                placement="left"
+                closable={false}
+                onClose={onClose}
+                visible={visible}
+            >
+                {tab.map((item, index) => {
+                    return (
+                        <div className={index == tabIndex ? 'drawer_item active' : 'drawer_item'} onClick={() => jumpDrawerTab(index)}>
+                            {item.name} <span></span>
+                        </div>
+                    )
+                })}
+            </Drawer>
             <header className="home_header" style={{ top: flag ? '0px' : '-60px', opacity: flag ? 1 : .9 }}>
                 <div className="hear_show">
                     <div className="max">
@@ -98,24 +128,24 @@ const Home = (props: any) => {
                         </div>
                     </div>
                     <div className="min">
-                        <MenuOutlined style={{ fontSize: '18px' }} />
+                        <MenuOutlined onClick={() => drawerVisible()} style={{ fontSize: '18px' }} />
                         <div>郑~的个人博客</div>
-                        <SearchOutlined style={{ fontSize: '18px' }} />
+                        <SearchOutlined onClick={() => slideSearchFun()} style={{ fontSize: '18px' }} />
                     </div>
                 </div>
-                <div className="search_box" style={{height: slideSearch ? '90px': '0px'}}>
+                <div className="search_box" style={{ height: slideSearch ? '90px' : '0px' }}>
                     {/* <div> */}
-                        <Row>
-                            <Col span={24}>
-                                <Search
-                                    placeholder="input search text"
-                                    allowClear
-                                    enterButton="Search"
-                                    size="large"
+                    <Row>
+                        <Col span={24}>
+                            <Search
+                                placeholder="input search text"
+                                allowClear
+                                enterButton="Search"
+                                size="large"
                                 onSearch={onSearch}
-                                />
-                            </Col>
-                        </Row>
+                            />
+                        </Col>
+                    </Row>
                     {/* </div> */}
                 </div>
             </header>

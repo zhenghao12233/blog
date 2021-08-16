@@ -122,7 +122,7 @@
     }
     .home_header > div.search_box {
         width: 100%;
-        padding: 2%;
+        /* padding: 2%; */
     }
     /* .home_header > div.search_box > div {
         width: 100%;
@@ -144,4 +144,10 @@
 
   }
 
+  .drawer_item {
+      margin: 20px 0;
+  }
+  .drawer_item.active {
+      color: #52c7fa;
+  }
  

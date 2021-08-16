@@ -38,7 +38,7 @@ function About() {
             </div>
 
             <div className="about_blog">
-                <SoundOutlined style={{marginRight: '10px'}}/>本博客后端基于java + spring + mysql； 前端采用响应式设计，基于react框架。
+                <SoundOutlined style={{marginRight: '10px'}}/>本博客后端基于java + spring + mysql； 前端采用响应式设计，基于react + typescript + antd。
             </div>
         </div>
     )
