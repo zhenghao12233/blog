@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Popover, Input, Row, Col, Drawer } from 'antd'
 import {
-    HomeOutlined,
-    SettingFilled,
-    SmileOutlined,
-    SyncOutlined,
-    LoadingOutlined,
     SearchOutlined,
-    MenuOutlined
+    MenuOutlined,
+    VerticalAlignTopOutlined
 } from '@ant-design/icons';
 import { Switch, HashRouter, Route, Link, Redirect } from "react-router-dom";
 import './home.css'
@@ -68,8 +64,8 @@ const Home = (props: any) => {
         props.history.push(tab[index].url)
     }
 
-    const jumpDrawerTab = (index:number) => {
-        window.scroll(0,0)
+    const jumpDrawerTab = (index: number) => {
+        window.scroll(0, 0)
         setIndex(index)
         props.history.push(tab[index].url)
     }
@@ -91,8 +87,31 @@ const Home = (props: any) => {
         setVisible(true)
     }
 
+    // 回到顶部动画
+    const animate = (obj: any, target: number, callback?: Function) => {
+        clearInterval(obj.timer)     //先清除一下再执行，不然多次按钮点击定时器会叠加，所以每次点击就清除上一次的。
+        obj.timer = setInterval(function () {
+
+            var step = (target - window.pageYOffset) / 5
+            var step = step > 0 ? Math.ceil(step) : Math.floor(step)
+            if (window.pageYOffset == target) {   //注意这里变成了 == 不能 >= ,因为>=就不能多个按钮交互，小距离的就会被清除
+                clearInterval(obj.timer);
+                /* if(callback){        //如果有这个参数，那么就调用这个参数的函数
+                    callback();
+                } */
+                // 调用回调的另一种写法
+                callback && callback();
+            }
+            // obj.style.left = obj.window.pageYoffset + step + 'px';  //别忘了步长还要加上现在的坐标
+            window.scroll(0, window.pageYOffset + step);
+        }, 15)
+    }
+
     return (
         <div>
+            {/* 置顶动画 */}
+            <VerticalAlignTopOutlined onClick={() => animate({},0)} className="back_top" />
+            {/* 移动端抽屉层 */}
             <Drawer
                 title=""
                 placement="left"

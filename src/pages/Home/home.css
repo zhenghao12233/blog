@@ -151,3 +151,10 @@
       color: #52c7fa;
   }
  
+.back_top {
+    position: fixed;
+    z-index: 5;
+    font-size: 34px;
+    right: 4%;
+    bottom: 14%;
+}
