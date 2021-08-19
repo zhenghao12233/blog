@@ -174,11 +174,11 @@ const Home = (props: any) => {
             <div className="center" style={{ overflow: 'hidden' }}>
                 <Switch>
 
-                    <Route path="/about" component={About}></Route>
+                    {/* <Route path="/about" component={About}></Route>
                     <Route path="/feedback" component={FeedBack}></Route>
                     <Route path="/skill" component={SkillShare}></Route>
                     <Route path="/count" component={CountSkill}></Route>
-                    <Route path="/life" component={ProcessLife}></Route>
+                    <Route path="/life" component={ProcessLife}></Route> */}
                     <Route path="/" component={Main}></Route>
                 </Switch>
             </div>

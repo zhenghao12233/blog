@@ -121,7 +121,8 @@ class LeftMain extends Component<any, any> {
 
     render() {
         return (
-            <div className="left_main">
+            //  className="left_main"
+            <div>
                 {/* 轮播 */}
                 <div className="swiper_box">
                     <ul className="swiper_img" style={{ transform: `rotateY(` + this.state.rotateDeg + 'deg)' }}>

@@ -13,7 +13,8 @@ function RightMain() {
     )
 
     return (
-        <div className="right_main">
+        // <div className="right_main">
+        <div>
             {/* 个人介绍 */}
             <div className="introduce_box">
                 <h2 className="title">
