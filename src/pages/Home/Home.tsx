@@ -26,7 +26,7 @@ const Home = (props: any) => {
         { id: 1, name: '技术分享', url: '/skill', choose: false },
         { id: 2, name: '算法解析', url: '/count', choose: false },
         { id: 3, name: '程序人生', url: '/life', choose: false },
-        { id: 4, name: '关于我', url: '/about', choose: false },
+        { id: 4, name: '关于我', url: '/about', choose: false }
         // { id: 0, name: '留言', url: '/feedback', choose: false }
     ])
     const [slideSearch, setSlideSearch] = useState(false)
@@ -37,10 +37,14 @@ const Home = (props: any) => {
     )
 
     useEffect(() => {
+        console.log(props.location.pathname)
         let i = tab.findIndex((itme => itme.url == props.location.pathname))
-        setIndex(i)
-        props.history.push(tab[i].url)
-
+        if (i != -1) {
+            setIndex(i)
+            props.history.push(tab[i].url)
+        }else {
+            props.history.push(props.location.pathnam)
+        }
 
     }, [])
 

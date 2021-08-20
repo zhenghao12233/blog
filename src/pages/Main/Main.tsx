@@ -7,6 +7,7 @@ import FeedBack from '../FeedBack/FeedBack';
 import SkillShare from '../../components/SkillShare/SkillShare';
 import CountSkill from '../../components/CountSkill/CountSkill';
 import ProcessLife from '../../components/ProcessLife/ProcessLife';
+import Detail from '../../components/Detail/Detail'
 function Main() {
     return (
         <div >
@@ -17,6 +18,7 @@ function Main() {
                     <Route path="/skill" component={SkillShare}></Route>
                     <Route path="/count" component={CountSkill}></Route>
                     <Route path="/life" component={ProcessLife}></Route>
+                    <Route path="/detail" component={Detail}></Route>
                     <Route path="/" component={LeftMain}></Route>
                 </Switch>
                 {/* <LeftMain /> */}
