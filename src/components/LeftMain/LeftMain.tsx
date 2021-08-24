@@ -34,6 +34,7 @@ class LeftMain extends Component<any, any> {
         // 类似组件监听滚动
         // window.addEventListener("scroll",this.test)
     }
+    // 类似组件绑定窗口滚动
     test = (e: any) => {
         var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
         console.log("滚动距离" + scrollTop);

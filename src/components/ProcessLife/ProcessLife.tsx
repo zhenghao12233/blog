@@ -1,13 +1,20 @@
-import React from 'react'
+import React,{ useState, useEffect, useRef } from 'react'
 import {
     SmileOutlined
 } from '@ant-design/icons';
+import './index.css'
+
 function ProcessLife() {
+    
+    useEffect(() => {
+       
+    },[])
+
     return (
         <div className="process_life_box skill_content_box">
                     <div className="content_title">程序人生</div>
                     <ul>
-                        <li>
+                        <li className="small_process">
                             <div className="top_content">
                                 <img src="https://img0.baidu.com/it/u=1783627040,2442271822&fm=26&fmt=auto&gp=0.jpg" alt="" />
                                 <div className="content_info">
@@ -26,7 +33,7 @@ function ProcessLife() {
                                 </div>
                             </div>
                         </li>
-                        <li>
+                        <li className="small_process">
                             <div className="top_content">
                                 <img src="https://img0.baidu.com/it/u=1783627040,2442271822&fm=26&fmt=auto&gp=0.jpg" alt="" />
                                 <div className="content_info">
@@ -45,7 +52,7 @@ function ProcessLife() {
                                 </div>
                             </div>
                         </li>
-                        <li>
+                        <li className="small_process">
                             <div className="top_content">
                                 <img src="https://img0.baidu.com/it/u=1783627040,2442271822&fm=26&fmt=auto&gp=0.jpg" alt="" />
                                 <div className="content_info">
@@ -64,7 +71,7 @@ function ProcessLife() {
                                 </div>
                             </div>
                         </li>
-                        <li>
+                        <li className="small_process">
                             <div className="top_content">
                                 <img src="https://img0.baidu.com/it/u=1783627040,2442271822&fm=26&fmt=auto&gp=0.jpg" alt="" />
                                 <div className="content_info">
@@ -83,7 +90,7 @@ function ProcessLife() {
                                 </div>
                             </div>
                         </li>
-                        <li>
+                        <li className="small_process">
                             <div className="top_content">
                                 <img src="https://img0.baidu.com/it/u=1783627040,2442271822&fm=26&fmt=auto&gp=0.jpg" alt="" />
                                 <div className="content_info">
@@ -102,7 +109,7 @@ function ProcessLife() {
                                 </div>
                             </div>
                         </li>
-                        <li>
+                        <li className="small_process">
                             <div className="top_content">
                                 <img src="https://img0.baidu.com/it/u=1783627040,2442271822&fm=26&fmt=auto&gp=0.jpg" alt="" />
                                 <div className="content_info">
@@ -121,7 +128,7 @@ function ProcessLife() {
                                 </div>
                             </div>
                         </li>
-                        <li>
+                        <li className="small_process">
                             <div className="top_content">
                                 <img src="https://img0.baidu.com/it/u=1783627040,2442271822&fm=26&fmt=auto&gp=0.jpg" alt="" />
                                 <div className="content_info">
@@ -140,7 +147,7 @@ function ProcessLife() {
                                 </div>
                             </div>
                         </li>
-                        <li>
+                        <li className="small_process">
                             <div className="top_content">
                                 <img src="https://img0.baidu.com/it/u=1783627040,2442271822&fm=26&fmt=auto&gp=0.jpg" alt="" />
                                 <div className="content_info">
@@ -159,7 +166,7 @@ function ProcessLife() {
                                 </div>
                             </div>
                         </li>
-                        <li>
+                        <li className="small_process">
                             <div className="top_content">
                                 <img src="https://img0.baidu.com/it/u=1783627040,2442271822&fm=26&fmt=auto&gp=0.jpg" alt="" />
                                 <div className="content_info">
@@ -178,7 +185,7 @@ function ProcessLife() {
                                 </div>
                             </div>
                         </li>
-                        <li>
+                        <li className="small_process">
                             <div className="top_content">
                                 <img src="https://img0.baidu.com/it/u=1783627040,2442271822&fm=26&fmt=auto&gp=0.jpg" alt="" />
                                 <div className="content_info">

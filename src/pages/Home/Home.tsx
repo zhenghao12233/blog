@@ -46,14 +46,40 @@ const Home = (props: any) => {
             props.history.push(props.location.pathnam)
         }
 
+        isShowProcess()
+
     }, [])
+
+    // 判断程序人生的每个小li是否展示
+    const isShowProcess = () => {
+        // 程序人生的每个小li 
+        let fathers = document.querySelectorAll(".small_process")
+        console.log(fathers)
+        let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+        console.log(document.documentElement.scrollTop || document.body.scrollTop)
+        let clientHeight = document.documentElement.clientHeight
+        console.log(document.documentElement.clientHeight)
+        for (let i = 0 ; i < fathers.length; i++) {
+            // console.log(i,(fathers[i] as HTMLElement ).offsetTop)
+            if ( (scrollTop <=  ( fathers[i] as HTMLElement).offsetTop ) &&  (( fathers[i] as HTMLElement).offsetTop) <= scrollTop + clientHeight ) {
+                console.log(i,(fathers[i] as HTMLElement ).offsetTop);
+                // (fathers[i] as HTMLElement ).classList.add("test")
+                (fathers[i] as HTMLElement ).style.transform = 'translateY(0%)';
+                (fathers[i] as HTMLElement ).style.opacity = '1';   
+            }else {
+                // (fathers[i] as HTMLElement ).classList.add("test")
+                (fathers[i] as HTMLElement ).style.transform = 'translateY(20%)';
+                (fathers[i] as HTMLElement ).style.opacity = '0';
+            }
+        }
+    }
 
     // 不要放在初始生命周期内
     window.onscroll = () => {
         //为了保证兼容性，这里取两个值，哪个有值取哪一个
         //scrollTop就是触发滚轮事件时滚轮的高度
 
-        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
 
         if (scrollTop > scrollDistance) {
             setFlag(false)
@@ -61,6 +87,8 @@ const Home = (props: any) => {
             setFlag(true)
         }
         setScrollDistance(scrollTop)
+
+        isShowProcess()
     }
 
     const jumpTab = (index: number) => {
