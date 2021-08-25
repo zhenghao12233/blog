@@ -18,7 +18,7 @@ body,html,#root{
     height: 100%;
     background: #E9EAED;
 }
-clear::after {
+.clear::after {
     content: '';
     display: block;
     visibility: hidden;

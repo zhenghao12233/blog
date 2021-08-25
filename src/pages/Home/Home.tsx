@@ -56,11 +56,11 @@ const Home = (props: any) => {
     const isShowProcess = () => {
         // 程序人生的每个小li 
         let fathers = document.querySelectorAll(".small_process")
-        console.log(fathers)
+        // console.log(fathers)
         let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
-        console.log(document.documentElement.scrollTop || document.body.scrollTop)
+        // console.log(document.documentElement.scrollTop || document.body.scrollTop)
         let clientHeight = document.documentElement.clientHeight
-        console.log(document.documentElement.clientHeight)
+        // console.log(document.documentElement.clientHeight)
         for (let i = 0 ; i < fathers.length; i++) {
             // console.log(i,(fathers[i] as HTMLElement ).offsetTop)
             if ( (scrollTop <=  ( fathers[i] as HTMLElement).offsetTop ) &&  (( fathers[i] as HTMLElement).offsetTop) <= scrollTop + clientHeight ) {
