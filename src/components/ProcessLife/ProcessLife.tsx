@@ -21,10 +21,10 @@ function ProcessLife() {
                                     <span className="abstract">Computed本质是一个具备缓存的watcher，依赖的属性发生变化就会更新视图。 适用于计算比较消耗性能的计算场景。当表达式过于复杂时，在模板中放入过多逻辑会让模板难以维护，可以将复杂的逻辑放入计算属性中处理。</span>
                                     <div>
                                         <span>2021-08-15</span>
-                                        <span>
+                                        {/* <span>
                                             <SmileOutlined style={{ marginRight: '5px' }} />
                                             20
-                                        </span>
+                                        </span> */}
                                         <span>
                                             <SmileOutlined style={{ marginRight: '5px' }} />
                                             23

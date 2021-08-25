@@ -42,8 +42,8 @@ const Detail = (props:any) => {
             <h2 className="detail_title">{article.title}</h2>
             <div className="detail_info">
                 <span>{article.date}</span>
-                <SmileOutlined style={{fontSize: '16px',marginRight: '5px'}}/>
-                <span style={{marginRight: '15px'}}>{article.user_like}</span>
+                {/* <SmileOutlined style={{fontSize: '16px',marginRight: '5px'}}/>
+                <span style={{marginRight: '15px'}}>{article.user_like}</span> */}
                 <SmileOutlined style={{fontSize: '16px',marginRight: '5px'}}/>
                 <span>{article.user_look}</span>
             </div>
