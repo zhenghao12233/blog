@@ -6,22 +6,48 @@ import {
     SmileOutlined
 } from '@ant-design/icons';
 import './index.css'
+import qs from 'querystring'
+import { findAllBy } from '../../api/ajax'
 
-const Detail = () => {
+const Detail = (props:any) => {
+
+    const [article, setArticle] = useState({
+        article: '',
+        title: '',
+        content: '',
+        date: '',
+        user_like: 0,
+        user_look: 0
+    })
 
     const [domString, setDomString] = useState("<p>121321</p>")
 
+    useEffect(() => {
+        console.log(props)
+        const query = qs.parse(props.location.search.substr(1))
+        console.log("query",query)
+        findAllById(query.id)
+    },[])
+
+    const findAllById = async (id:any) => {
+        let res = await findAllBy("findAllById",{
+            id
+        })
+        setArticle(res.data.article)
+        console.log("文章详情",res)
+    }
+
     return (
         <Card className="detail_box">
-            <h2 className="detail_title">几个优雅的JavaScript运算符使用技巧</h2>
+            <h2 className="detail_title">{article.title}</h2>
             <div className="detail_info">
-                <span>2021-05-25</span>
+                <span>{article.date}</span>
                 <SmileOutlined style={{fontSize: '16px',marginRight: '5px'}}/>
-                <span style={{marginRight: '15px'}}>20</span>
+                <span style={{marginRight: '15px'}}>{article.user_like}</span>
                 <SmileOutlined style={{fontSize: '16px',marginRight: '5px'}}/>
-                <span>20</span>
+                <span>{article.user_look}</span>
             </div>
-            <div className="detail_content" dangerouslySetInnerHTML={{ __html: domString }} />
+            <div className="detail_content" dangerouslySetInnerHTML={{ __html: article.article }} />
         </Card>
     );
 }

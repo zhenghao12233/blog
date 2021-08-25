@@ -10,6 +10,8 @@ import SkillShare from '../SkillShare/SkillShare';
 import CountSkill from '../CountSkill/CountSkill';
 import ProcessLife from '../ProcessLife/ProcessLife';
 
+import { getArticleList } from '../../api/ajax';
+
 class LeftMain extends Component<any, any> {
     constructor(props: any) {
         super(props);
@@ -18,15 +20,17 @@ class LeftMain extends Component<any, any> {
             swiperIndex: 0,
             rotateDeg: 0,
             thumbList: [
-                "https://img0.baidu.com/it/u=1783627040,2442271822&fm=26&fmt=auto&gp=0.jpg",
-                "https://img0.baidu.com/it/u=251614576,2693916083&fm=26&fmt=auto&gp=0.jpg",
-                "https://img0.baidu.com/it/u=103721101,4076571305&fm=26&fmt=auto&gp=0.jpg",
-                "https://img0.baidu.com/it/u=2849358178,3144634908&fm=26&fmt=auto&gp=0.jpg"
-            ]
+                // "https://img0.baidu.com/it/u=1783627040,2442271822&fm=26&fmt=auto&gp=0.jpg",
+                // "https://img0.baidu.com/it/u=251614576,2693916083&fm=26&fmt=auto&gp=0.jpg",
+                // "https://img0.baidu.com/it/u=103721101,4076571305&fm=26&fmt=auto&gp=0.jpg",
+                // "https://img0.baidu.com/it/u=2849358178,3144634908&fm=26&fmt=auto&gp=0.jpg"
+                
+            ],
+            smallThumbList: []
         }
     }
     componentWillMount() {
-
+        this.getArticleListFun()
     }
 
     componentDidMount() {
@@ -35,9 +39,30 @@ class LeftMain extends Component<any, any> {
         // window.addEventListener("scroll",this.test)
     }
     // 类似组件绑定窗口滚动
-    test = (e: any) => {
-        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-        console.log("滚动距离" + scrollTop);
+    // test = (e: any) => {
+    //     var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    //     console.log("滚动距离" + scrollTop);
+    // }
+
+    // 获取文件列表
+    getArticleListFun = async () => {
+        let res = await getArticleList('findTitleOrContentOrType',{
+            title: '',
+            content: ''
+        })
+        for (let i=res.data.list.length-1; i>=0; i--) {
+            let rIndex = Math.floor(Math.random()*(i+1));
+            // 打印交换值
+            // console.log(i, rIndex);
+            let temp = res.data.list[rIndex];
+            res.data.list[rIndex] = res.data.list[i];
+            res.data.list[i] = temp;
+        }
+        console.log("文件列表",res.data.list)
+        this.setState({
+            thumbList: res.data.list.slice(0,4),
+            smallThumbList: res.data.list.slice(4,6)
+        })
     }
 
     // 自动转换
@@ -121,6 +146,9 @@ class LeftMain extends Component<any, any> {
     }
 
     render() {
+        const obj = {
+            name: "11"
+        }
         return (
             //  className="left_main"
             <div>
@@ -128,10 +156,10 @@ class LeftMain extends Component<any, any> {
                 <div className="swiper_box">
                     <ul className="swiper_img" style={{ transform: `rotateY(` + this.state.rotateDeg + 'deg)' }}>
                         {
-                            this.state.thumbList.map((item: string) => {
+                            this.state.thumbList.map((item: any) => {
                                 return (
                                     <li>
-                                        <img src={item} alt="轮播图" />
+                                        <img src={item.thumb} alt="轮播图" />
                                     </li>
                                 )
                             })
@@ -151,23 +179,23 @@ class LeftMain extends Component<any, any> {
                 {/* 小型图文 */}
                 <div className="swiper_article">
                     <ul>
-                        <li>
-                            <span>js防抖与节流的区别及实现</span>
-
-                            <img src="https://img0.baidu.com/it/u=103721101,4076571305&fm=26&fmt=auto&gp=0.jpg" alt="" />
-                            <i></i>
-                        </li>
-                        <li>
-                            <span>react的widthRouter</span>
-
-                            <img src="https://img0.baidu.com/it/u=103721101,4076571305&fm=26&fmt=auto&gp=0.jpg" alt="" />
-                            <i></i>
-                        </li>
+                        {
+                            this.state.smallThumbList.map((item: any,index: number) => {
+                                return (
+                                    <li>
+                                        <span>{item.title}</span>
+            
+                                        <img src={item.thumb} alt="" />
+                                        <i></i>
+                                    </li>
+                                )
+                            })
+                        }
                     </ul>
                 </div>
 
                 {/* 技术分享 */}
-                <SkillShare />
+                <SkillShare></SkillShare>
                 <div style={{height: '20px',float: 'left',opacity: 0}}>占位符</div>
                 {/* 算法解析 */}
                 <CountSkill />

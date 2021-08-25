@@ -50,6 +50,8 @@ const Home = (props: any) => {
 
     }, [])
 
+    // 获取数据
+
     // 判断程序人生的每个小li是否展示
     const isShowProcess = () => {
         // 程序人生的每个小li 
@@ -92,6 +94,8 @@ const Home = (props: any) => {
     }
 
     const jumpTab = (index: number) => {
+        // window.scroll(0, 0)
+        animate({},0)
         setIndex(index)
         props.history.push(tab[index].url)
     }

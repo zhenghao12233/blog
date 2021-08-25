@@ -10,10 +10,10 @@ function About() {
                 <img src="https://img0.baidu.com/it/u=1783627040,2442271822&fm=26&fmt=auto&gp=0.jpg" alt="" />
             </div>
             <div className="about_item">
-                郑好
+                郑~
             </div>
             <div className="about_item">
-                男、95后
+                男、97后
             </div>
             <div className="about_item">
                 现居重庆市沙坪坝区
