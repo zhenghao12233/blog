@@ -20,3 +20,21 @@ export const findAllBy = (url ,data) => {
     return ajax(url, data)
 }
 
+/* 
+    更新user_look, get请求
+        url: updateUserLook
+        参数: id
+*/
+export const updateUserLook = (url,data) => {
+    return ajax(url, data)
+}
+
+/* 
+    获取推荐榜
+    findAllRecommond
+        url: findAllRecommond 
+*/
+export const findAllRecommond = (url, data) => {
+    return ajax(url, data)
+}
+
