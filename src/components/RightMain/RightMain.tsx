@@ -1,14 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import './index.css'
 import {Popover, Button} from 'antd'
 import {
     WechatOutlined,QqOutlined,GithubOutlined
 } from '@ant-design/icons';
 
+import wechat from './wechat.jpg'
+import qq from './qq.jpg'
+
 function RightMain() {
-    const content = (
+
+    const [ recommendList, setRecommendList ] = useState([
+        {
+            id: 1,
+            title: 'ces'
+        }
+    ])
+
+    const content1 = (
         <div>
-            <img style={{height: '160px',width: '130px'}} src="https://img0.baidu.com/it/u=1783627040,2442271822&fm=26&fmt=auto&gp=0.jpg" alt="" />
+            <img style={{height: '160px',width: '130px'}} src={wechat} alt="" />
+        </div>
+    )
+
+    const content2 = (
+        <div>
+            <img style={{height: '240px',width: '150px'}} src={qq} alt="" />
         </div>
     )
 
@@ -33,15 +50,15 @@ function RightMain() {
                     <span>1223363269@qq.com</span>
                 </div>
                 <div className="btn_box">
-                    <Popover content={content} trigger="hover">
+                    <Popover content={content1} trigger="hover">
                         <WechatOutlined className="btn" />
                     </Popover>
-                    <Popover content={content} trigger="hover">
+                    <Popover content={content2} trigger="hover">
                         <QqOutlined className="btn"  />
                     </Popover>
-                    <Popover content={content} title="Title" trigger="hover">
+                    {/* <Popover content={content} title="Title" trigger="hover">
                         <GithubOutlined className="btn"  />
-                    </Popover>
+                    </Popover> */}
                     
                 </div>
             </div>
@@ -53,46 +70,22 @@ function RightMain() {
                     <h1>点击排行</h1>
                     <span className="squre"></span>
                 </div>
-                <div className="rank_item">
+                {
+                    recommendList.map((item,index) => {
+                        return (
+                            <div className="rank_item">
+                                <span>{index + 1}</span>
+                                <span>{item.title}</span>
+                            </div>
+                        )
+                    })
+                }
+                
+                {/* <div className="rank_item">
                     <span>1</span>
                     <span>computed和watchcomputed和watchcomputed和watch</span>
-                </div>
-                <div className="rank_item">
-                    <span>1</span>
-                    <span>computed和watchcomputed和watchcomputed和watch</span>
-                </div>
-                <div className="rank_item">
-                    <span>1</span>
-                    <span>computed和watchcomputed和watchcomputed和watch</span>
-                </div>
-                <div className="rank_item">
-                    <span>1</span>
-                    <span>computed和watchcomputed和watchcomputed和watch</span>
-                </div>
-                <div className="rank_item">
-                    <span>1</span>
-                    <span>computed和watchcomputed和watchcomputed和watch</span>
-                </div>
-                <div className="rank_item">
-                    <span>1</span>
-                    <span>computed和watchcomputed和watchcomputed和watch</span>
-                </div>
-                <div className="rank_item">
-                    <span>1</span>
-                    <span>computed和watchcomputed和watchcomputed和watch</span>
-                </div>
-                <div className="rank_item">
-                    <span>1</span>
-                    <span>computed和watchcomputed和watchcomputed和watch</span>
-                </div>
-                <div className="rank_item">
-                    <span>1</span>
-                    <span>computed和watchcomputed和watchcomputed和watch</span>
-                </div>
-                <div className="rank_item">
-                    <span>1</span>
-                    <span>computed和watchcomputed和watchcomputed和watch</span>
-                </div>
+                </div> */}
+                
             </div>
         </div>
     )

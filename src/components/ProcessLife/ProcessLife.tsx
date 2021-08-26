@@ -1,55 +1,84 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, Component } from 'react'
+import { Pagination } from 'antd'
 import {
     SmileOutlined
 } from '@ant-design/icons';
+import { withRouter, NavLink } from 'react-router-dom'
 import './index.css'
 import { getArticleList } from '../../api/ajax'
 
-function ProcessLife() {
+class ProcessLife extends Component<any, any> {
 
-    const [artcileList, setArticleList] = useState([])
+    constructor(props: any) {
+        super(props)
+        this.state = {
+            artcileList: [],
+            total: 0
+        }
+    }
 
-    useEffect(() => {
-        getArticleFun()
-    }, [])
+    // const [artcileList, setArticleList] = useState([])
 
-    const getArticleFun = () => {
-        getArticleList('findTitleOrContentOrType', {
+    // useEffect(() => {
+    //     getArticleFun()
+    // }, [])
+
+    componentWillMount() {
+        console.log(this.props?.location?.pathname)
+        this.getArticleFun(1, 6)
+    }
+
+    getArticleFun = async (page: number, size: number) => {
+        let res = await getArticleList('findTitleOrContentOrType', {
             title: '',
             content: '',
-            type: 3
-        }).then((res: any) => {
-            console.log("程序人生", res)
-            setArticleList(res.data.list)
+            type: 3,
+            page: page <= 0 ? 1 : page,
+            size
+        })
+        console.log("程序人生", res)
+        this.setState({
+            artcileList: res.data.list,
+            total: res.data.total
         })
     }
 
-    return (
-        <div className="process_life_box skill_content_box">
+    onChange = (page:any,pagesize:any) => {
+        console.log(page,pagesize)
+        this.getArticleFun(page, pagesize)
+    }
+
+
+    render() {
+        return (
+        <div>
+            <div className="process_life_box skill_content_box">
             <div className="content_title">程序人生</div>
             <ul>
                 {
-                    artcileList.map((item: any, index: any) => {
+                    this.state.artcileList.map((item: any, index: any) => {
                         return (
-                            <li className="small_process">
-                                <div className="top_content">
-                                    <img src={item.thumb} alt="" />
-                                    <div className="content_info">
-                                        <span className="abstract">{item.content}</span>
-                                        <div>
-                                            <span>{item.date}</span>
-                                            {/* <span>
-                                            <SmileOutlined style={{ marginRight: '5px' }} />
-                                            20
-                                        </span> */}
-                                            <span>
+                            <NavLink to={"/detail?id=" + item.id}>
+                                <li className="small_process">
+                                    <div className="top_content">
+                                        <img src={item.thumb} alt="" />
+                                        <div className="content_info">
+                                            <span className="abstract">{item.content}</span>
+                                            <div>
+                                                <span>{item.date}</span>
+                                                {/* <span>
                                                 <SmileOutlined style={{ marginRight: '5px' }} />
-                                            {item.user_look}
-                                        </span>
+                                                20
+                                            </span> */}
+                                                <span>
+                                                    <SmileOutlined style={{ marginRight: '5px' }} />
+                                                {item.user_look}
+                                            </span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </li>
+                                </li>
+                            </NavLink>
                         )
                     })
                 }
@@ -76,7 +105,20 @@ function ProcessLife() {
                         </li> */}
             </ul>
         </div>
+
+                <div style={{height: '20px',clear: 'both'}}></div>
+                <Pagination
+                    total={this.state.total}
+                    showSizeChanger
+                    showQuickJumper
+                    defaultPageSize={6}
+                    onChange={(page,pagesize) => this.onChange(page,pagesize)}
+                    showTotal={total => `共 ${total} 条`}
+                />
+
+        </div>
     )
+    }
 }
 
 export default ProcessLife

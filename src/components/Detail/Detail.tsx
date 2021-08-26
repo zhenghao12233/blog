@@ -20,13 +20,16 @@ const Detail = (props:any) => {
         user_look: 0
     })
 
-    const [domString, setDomString] = useState("<p>121321</p>")
-
     useEffect(() => {
         console.log(props)
         const query = qs.parse(props.location.search.substr(1))
         console.log("query",query)
-        findAllById(query.id)
+        if (query.id) {
+            let id:string = query.id as string
+            window.sessionStorage.setItem("aid", id )
+        }
+
+        findAllById(query.id || window.sessionStorage.getItem("aid"))
     },[])
 
     const findAllById = async (id:any) => {

@@ -45,6 +45,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }
 .click_rank_box .rank_title h1 {
     margin-bottom: 0;
@@ -59,6 +60,7 @@
     display: flex;
     align-items: center;
     margin-top: 10px;
+    cursor: pointer;
    
 }
 .click_rank_box .rank_item span:nth-child(1) {

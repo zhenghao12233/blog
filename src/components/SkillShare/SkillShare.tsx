@@ -1,47 +1,75 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, Component } from 'react'
+import { Pagination } from 'antd'
 import {
     SmileOutlined
 } from '@ant-design/icons';
+import { withRouter, NavLink } from 'react-router-dom'
 import { getArticleList } from '../../api/ajax'
-function SkillShare() {
-    const [artcileList, setArticleList] = useState([])
+class SkillShare extends Component<any, any> {
 
-    useEffect(() => {
-        getArticleFun()
-    }, [])
+    constructor(props: any) {
+        super(props)
+        this.state = {
+            artcileList: [],
+            total: 0,
+        }
+    }
 
-    const getArticleFun = () => {
-        getArticleList('findTitleOrContentOrType', {
+    // const [artcileList, setArticleList] = useState([])
+
+    // useEffect(() => {
+    //     getArticleFun()
+    // }, [])
+
+    componentWillMount() {
+        this.getArticleFun(1,6)
+    }
+
+    getArticleFun = async (page: number, size: number) => {
+        let res = await getArticleList('findTitleOrContentOrType', {
             title: '',
             content: '',
-            type: 1
-        }).then((res: any) => {
-            console.log("技术分享", res)
-            setArticleList(res.data.list)
+            type: 1,
+            page: page <= 0 ? 1 : page,
+            size
+        })
+        console.log("技术分享", res)
+        this.setState({
+            artcileList: res.data.list,
+            total: res.data.total
         })
     }
 
-    return (
-        <div className="skill_share_box skill_content_box clear">
+    onChange = (page:any,pagesize:any) => {
+        console.log(page,pagesize)
+        this.getArticleFun(page, pagesize)
+    }
+
+    render() {
+        return (
+        <div>
+            <div className="skill_share_box skill_content_box clear">
             <div className="content_title">技术分享</div>
             <ul>
-                {
-                    artcileList.map((item: any, index: any) => {
-                        return (
-                            <li>
-                                <img className="thumb" src={item.thumb} alt="" />
-                                <b className="title">{item.title}</b>
-                                <h4 className="content">
-                                    {item.content}
-                                </h4>
-                                <span className="like">
-                                    <SmileOutlined style={{ color: 'rgb(255, 186, 95)' }} />
-                                    <span>{item.user_look}</span>
-                                </span>
-                            </li>
-                        )
-                    })
-                }
+                        {
+                            this.state.artcileList.map((item: any, index: any) => {
+                                return (
+                                    <NavLink to={"/detail?id=" + item.id}>
+                                        <li>
+                                            <img className="thumb" src={item.thumb} alt="" />
+                                            <b className="title">{item.title}</b>
+                                            <h4 className="content">
+                                                {item.content}
+                                            </h4>
+                                            <span className="like">
+                                                <SmileOutlined style={{ color: 'rgb(255, 186, 95)' }} />
+                                                <span>{item.user_look}</span>
+                                            </span>
+                                        </li>
+                                    </NavLink>
+                                )
+                            })
+                        }
 
                 {/* <li>
                     <img className="thumb" src="https://img0.baidu.com/it/u=1783627040,2442271822&fm=26&fmt=auto&gp=0.jpg" alt="" />
@@ -55,8 +83,22 @@ function SkillShare() {
                     </span>
                 </li> */}
             </ul>
+
+            </div>
+            <div style={{height: '20px',clear: 'both'}}></div>
+                {
+                    this.props.location && this.props.location.pathname  == "/skill" ? <Pagination
+                    total={this.state.total}
+                    showSizeChanger
+                    showQuickJumper
+                    defaultPageSize={6}
+                    onChange={(page,pagesize) => this.onChange(page,pagesize)}
+                    showTotal={total => `共 ${total} 条`}
+                /> : ''
+                }
         </div>
     )
+    }
 }
 
 export default SkillShare

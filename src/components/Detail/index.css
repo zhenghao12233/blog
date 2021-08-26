@@ -5,6 +5,7 @@
 }
 .detail_box .detail_info {
     font-size: 14px;
+    margin-bottom: 30px;
 }
 .detail_box .detail_info span:nth-of-type(1) {
     margin-right: 50px;

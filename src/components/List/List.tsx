@@ -5,8 +5,9 @@ import {
 } from '@ant-design/icons';
 import { withRouter, NavLink } from 'react-router-dom'
 import { getArticleList } from '../../api/ajax'
+import qs from 'querystring'
 
-class CountSkill extends Component<any, any>  {
+class List extends Component<any, any>  {
 
     constructor(props: any) {
         super(props);
@@ -21,8 +22,17 @@ class CountSkill extends Component<any, any>  {
     // const [ pageNode, setPageNode ] = useState({})
 
     componentWillMount() {
-        console.log(this.props?.location?.pathname)
-        this.getArticleFun(1, 6)
+        // console.log(this.props?.location?.pathname)
+        // console.log("state", this.props )
+        const query = qs.parse(this.props.location.search.substr(1))
+        console.log("query",query)
+        let search: string = ''
+        if (query.search) {
+            search = query.search as string
+        }else {
+            search = window.sessionStorage.getItem("search") as string
+        }
+        this.getArticleFun(search,1, 6)
     }
 
 
@@ -31,11 +41,11 @@ class CountSkill extends Component<any, any>  {
     //     console.log(props?.location?.pathname)
     //     getArticleFun(1,6)
     // }, [])
-    getArticleFun = async (page: number, size: number) => {
+    getArticleFun = async (search: string,page: number, size: number) => {
         let res = await getArticleList('findTitleOrContentOrType', {
-            title: '',
-            content: '',
-            type: 2,
+            title: search,
+            content: search,
+            // type: 2,
             page: page <= 0 ? 1 : page,
             size
         })
@@ -59,14 +69,21 @@ class CountSkill extends Component<any, any>  {
 
     onChange = (page:any,pagesize:any) => {
         console.log(page,pagesize)
-        this.getArticleFun(page, pagesize)
+        const query = qs.parse(this.props.location.search.substr(1))
+        let search: string = ''
+        if (query.search) {
+            search = query.search as string
+        }else {
+            search = window.sessionStorage.getItem("search") as string
+        }
+        this.getArticleFun(search,page, pagesize)
     }
 
     render() {
         return (
             <div>
                 <div className="skill_share_box skill_content_box">
-                    <div className="content_title">算法解析</div>
+                    <div className="content_title">搜索结果</div>
                     <ul>
                         {
                             this.state.artcileList.map((item: any, index: any) => {
@@ -102,20 +119,18 @@ class CountSkill extends Component<any, any>  {
 
                 </div>
                 <div style={{height: '20px',clear: 'both'}}></div>
-                {
-                    this.props.location && this.props.location.pathname  == "/count" ? <Pagination
+                <Pagination
                     total={this.state.total}
                     showSizeChanger
                     showQuickJumper
                     defaultPageSize={6}
                     onChange={(page,pagesize) => this.onChange(page,pagesize)}
                     showTotal={total => `共 ${total} 条`}
-                /> : ''
-                }
+                />
 
             </div >
         )
     }
 }
 
-export default withRouter(CountSkill)
+export default withRouter(List)

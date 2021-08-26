@@ -13,7 +13,7 @@ function About() {
                 郑~
             </div>
             <div className="about_item">
-                男、97后
+                男、97年
             </div>
             <div className="about_item">
                 现居重庆市沙坪坝区

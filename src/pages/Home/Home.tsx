@@ -14,6 +14,8 @@ import SkillShare from '../../components/SkillShare/SkillShare';
 import CountSkill from '../../components/CountSkill/CountSkill';
 import ProcessLife from '../../components/ProcessLife/ProcessLife';
 
+import wechat from './wechat.jpg'
+
 const { Search } = Input;
 // git push https://github.com/zhenghao12233/blog.git master
 
@@ -33,11 +35,10 @@ const Home = (props: any) => {
     const [visible, setVisible] = useState(false)
 
     const content = (
-        <img src="https://img0.baidu.com/it/u=1783627040,2442271822&fm=26&fmt=auto&gp=0.jpg" alt="" />
+        <img style={{width: '300px', height: '300px'}} src={wechat} alt="" />
     )
 
     useEffect(() => {
-        console.log(props.location.pathname)
         let i = tab.findIndex((itme => itme.url == props.location.pathname))
         if (i != -1) {
             setIndex(i)
@@ -108,11 +109,15 @@ const Home = (props: any) => {
 
     const slideSearchFun = () => {
         console.log(11)
+        
         setSlideSearch(!slideSearch)
     }
 
     const onSearch = (e: any) => {
         console.log(e)
+        setSlideSearch(!slideSearch)
+        props.history.push("/list?search=" + e)
+        window.sessionStorage.setItem("search",e)
     }
 
     const onClose = () => {
@@ -193,9 +198,9 @@ const Home = (props: any) => {
                     <Row>
                         <Col span={24}>
                             <Search
-                                placeholder="input search text"
+                                placeholder="请搜索关键词"
                                 allowClear
-                                enterButton="Search"
+                                enterButton="搜索"
                                 size="large"
                                 onSearch={onSearch}
                             />
@@ -223,7 +228,7 @@ const Home = (props: any) => {
                 <div className="footer_introduce">
                     <div className="intro_itme">
                         <Popover content={content}>
-                            <img src="https://img0.baidu.com/it/u=1783627040,2442271822&fm=26&fmt=auto&gp=0.jpg" alt="" />
+                            <img src={wechat} alt="" />
                         </Popover>
 
                         <div>我的微信</div>
