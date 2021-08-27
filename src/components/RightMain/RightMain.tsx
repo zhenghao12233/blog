@@ -52,7 +52,8 @@ class RightMain extends Component<any, any> {
 
     jumpDetail(id:any) {
         window.sessionStorage.setItem("aid",id)
-        this.props.history.push("/detail?id=" + id)
+        // this.props.history.push("/detail?id=" + id)
+        window.open("http://localhost:3000/#/detail?id=" + id);
     }
 
     content1 = (

@@ -78,6 +78,9 @@
     overflow: hidden;
     text-overflow: ellipsis;
 } 
-.click_rank_box a:nth-of-type(-n + 3) .rank_item span:nth-child(1){
+.click_rank_box .rank_item:nth-of-type(-n + 4) span:nth-child(1){
     background: rgb(255, 163, 101);
 }
+/* .click_rank_box a:nth-of-type(-n + 3) .rank_item span:nth-child(1){
+    background: rgb(255, 163, 101);
+} */
