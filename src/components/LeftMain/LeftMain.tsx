@@ -194,6 +194,8 @@ class LeftMain extends Component<any, any> {
                     </ul>
                 </div>
 
+                <div style={{height: '20px',clear: 'both'}}></div>
+
                 {/* 技术分享 */}
                 <SkillShare></SkillShare>
                 <div style={{height: '20px',float: 'left',opacity: 0}}>占位符</div>

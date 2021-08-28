@@ -6,6 +6,7 @@ import {
 import { withRouter, NavLink } from 'react-router-dom'
 import './index.css'
 import { getArticleList } from '../../api/ajax'
+import { dateTransfer } from '../../utils/transfer'
 
 class ProcessLife extends Component<any, any> {
 
@@ -65,7 +66,7 @@ class ProcessLife extends Component<any, any> {
                                         <div className="content_info">
                                             <span className="abstract">{item.content}</span>
                                             <div>
-                                                <span>{item.date}</span>
+                                                <span>{dateTransfer(item.date)}</span>
                                                 {/* <span>
                                                 <SmileOutlined style={{ marginRight: '5px' }} />
                                                 20

@@ -8,6 +8,7 @@ import {
 import './index.css'
 import qs from 'querystring'
 import { findAllBy, updateUserLook } from '../../api/ajax'
+import { dateTransfer } from '../../utils/transfer'
 
 class Detail extends Component<any, any> {
 
@@ -88,6 +89,9 @@ class Detail extends Component<any, any> {
             id
         })
         // setArticle(res.data.article)
+
+        // res.data.article.article = res.data.article.article.replace(/<pre[^>]*>/gi, '<pre style="background: #454545;">')
+        
         this.setState({
             article: res.data.article
         })
@@ -126,7 +130,7 @@ class Detail extends Component<any, any> {
             <Card className="detail_box" >
                 <h2 className="detail_title">{this.state.article.title}</h2>
                 <div className="detail_info">
-                    <span>{this.state.article.date}</span>
+                    <span>{dateTransfer(this.state.article.date,'YY:MM:DD hh:mm:ss')}</span>
                     {/* <SmileOutlined style={{fontSize: '16px',marginRight: '5px'}}/>
                     <span style={{marginRight: '15px'}}>{article.user_like}</span> */}
                     <SmileOutlined style={{ fontSize: '16px', marginRight: '5px' }} />
