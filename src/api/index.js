@@ -1,10 +1,13 @@
 import axios from 'axios';
 import { message } from 'antd';
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
 
-axios.defaults.baseURL = 'http://47.108.172.171:8082/'
+axios.defaults.baseURL = 'http://47.108.172.171/'
 // axios.defaults.baseURL = 'http://localhost:8082/'
 axios.interceptors.request.use(
     (config) => {
+        NProgress.start()
         console.log("post参数",config.data)
         console.log("get参数",config.params)
         config.headers = {
@@ -22,6 +25,7 @@ axios.interceptors.request.use(
  */
 axios.interceptors.response.use(
     (response) => {
+        NProgress.done()
         if (response.data.code != 0) {
             console.log(response.data.msg);
             // message.error(response.data.msg);

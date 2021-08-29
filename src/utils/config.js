@@ -1,0 +1,1 @@
+export const jumpUrl = 'http://47.108.172.171/'

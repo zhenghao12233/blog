@@ -10,6 +10,7 @@ import wechat from './wechat.jpg'
 import qq from './qq.jpg'
 import { NavLink,withRouter } from 'react-router-dom';
 import qs from 'querystring'
+import { jumpUrl } from '../../utils/config'
 
 class RightMain extends Component<any, any> {
 
@@ -53,7 +54,7 @@ class RightMain extends Component<any, any> {
     jumpDetail(id:any) {
         window.sessionStorage.setItem("aid",id)
         // this.props.history.push("/detail?id=" + id)
-        window.open("http://localhost:3000/#/detail?id=" + id);
+        window.open(jumpUrl + "#/detail?id=" + id);
     }
 
     content1 = (

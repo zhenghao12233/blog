@@ -48,7 +48,8 @@ class LeftMain extends Component<any, any> {
     getArticleListFun = async () => {
         let res = await getArticleList('findTitleOrContentOrType',{
             title: '',
-            content: ''
+            content: '',
+            size: 100
         })
         for (let i=res.data.list.length-1; i>=0; i--) {
             let rIndex = Math.floor(Math.random()*(i+1));
@@ -59,10 +60,22 @@ class LeftMain extends Component<any, any> {
             res.data.list[i] = temp;
         }
         console.log("文件列表",res.data.list)
+        const mxlist = this.shuffle(res.data.list)
         this.setState({
-            thumbList: res.data.list.slice(0,4),
-            smallThumbList: res.data.list.slice(4,6)
+            thumbList: mxlist.slice(0,4),
+            smallThumbList: mxlist.slice(4,6)
         })
+    }
+    shuffle = (arr:string[]) => {
+        for (let i=arr.length-1; i>=0; i--) {
+            let rIndex = Math.floor(Math.random()*(i+1));
+            // 打印交换值
+            // console.log(i, rIndex);
+            let temp = arr[rIndex];
+            arr[rIndex] = arr[i];
+            arr[i] = temp;
+        }
+        return arr;
     }
 
     // 自动转换
@@ -159,7 +172,7 @@ class LeftMain extends Component<any, any> {
                             this.state.thumbList.map((item: any) => {
                                 return (
                                     <li>
-                                        <img src={item.thumb} alt="轮播图" />
+                                        <img src={item.thumb || 'http://47.108.172.171:5000/public/img_26f40dd26.png'} alt="轮播图" />
                                     </li>
                                 )
                             })
@@ -185,7 +198,7 @@ class LeftMain extends Component<any, any> {
                                     <li>
                                         <span>{item.title}</span>
             
-                                        <img src={item.thumb} alt="" />
+                                        <img src={item.thumb || 'http://47.108.172.171:5000/public/img_26f40dd26.png'} alt="" />
                                         <i></i>
                                     </li>
                                 )

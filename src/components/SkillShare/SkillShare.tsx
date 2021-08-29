@@ -5,6 +5,8 @@ import {
 } from '@ant-design/icons';
 import { withRouter, NavLink } from 'react-router-dom'
 import { getArticleList } from '../../api/ajax'
+import { jumpUrl } from '../../utils/config'
+
 class SkillShare extends Component<any, any> {
 
     constructor(props: any) {
@@ -40,6 +42,13 @@ class SkillShare extends Component<any, any> {
         })
     }
 
+    jumpDetail(id: any) {
+        console.log(this.props)
+        window.sessionStorage.setItem("aid", id)
+        // this.props.history.push("/detail?id=" + id)
+        window.open(jumpUrl + "#/detail?id=" + id);
+    }
+
     onChange = (page:any,pagesize:any) => {
         console.log(page,pagesize)
         this.getArticleFun(page, pagesize)
@@ -54,9 +63,9 @@ class SkillShare extends Component<any, any> {
                         {
                             this.state.artcileList.map((item: any, index: any) => {
                                 return (
-                                    <NavLink to={"/detail?id=" + item.id}>
-                                        <li>
-                                            <img className="thumb" src={item.thumb} alt="" />
+                                    // <NavLink to={"/detail?id=" + item.id}>
+                                        <li onClick={() => this.jumpDetail(item.id)}>
+                                            <img className="thumb" src={item.thumb || 'http://47.108.172.171:5000/public/img_26f40dd26.png'} alt="" />
                                             <b className="title">{item.title}</b>
                                             <h4 className="content">
                                                 {item.content}
@@ -66,7 +75,7 @@ class SkillShare extends Component<any, any> {
                                                 <span>{item.user_look}</span>
                                             </span>
                                         </li>
-                                    </NavLink>
+                                    // </NavLink>
                                 )
                             })
                         }

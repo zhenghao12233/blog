@@ -55,6 +55,9 @@
 .left_main .swiper_box .swiper_img li:nth-child(2) {
     transform: rotateY(90deg) translateZ(308.5px);
 }
+.left_main .swiper_box .swiper_img li:nth-child(3) img {
+    transform: rotateY(180deg);
+}
 .left_main .swiper_box .swiper_img li:nth-child(3) {
     transform: rotateY(90deg) translateZ(-308.5px);
 }
