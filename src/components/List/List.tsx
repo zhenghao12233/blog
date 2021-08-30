@@ -6,6 +6,7 @@ import {
 import { withRouter, NavLink } from 'react-router-dom'
 import { getArticleList } from '../../api/ajax'
 import qs from 'querystring'
+import { jumpUrl } from '../../utils/config'
 
 class List extends Component<any, any>  {
 
@@ -28,6 +29,7 @@ class List extends Component<any, any>  {
         console.log("query",query)
         let search: string = ''
         if (query.search) {
+            window.sessionStorage.setItem("search",String(query.search))
             search = query.search as string
         }else {
             search = window.sessionStorage.getItem("search") as string
@@ -58,12 +60,15 @@ class List extends Component<any, any>  {
 
     jumpDetail = (id:number) => {
         console.log(this.props)
-        this.props.history.push({
-            pathnam: "/detail",
-            query: {
-                id
-            }
-        })
+        console.log(window.location.origin)
+        // this.props.history.push({
+        //     pathnam: "/detail",
+        //     query: {
+        //         id
+        //     }
+        // })
+        window.sessionStorage.setItem("aid", String(id))
+        window.open(window.location.origin + "/#/detail?id=" + id);
     }
 
 
@@ -88,8 +93,8 @@ class List extends Component<any, any>  {
                         {
                             this.state.artcileList.map((item: any, index: any) => {
                                 return (
-                                    <NavLink to={"/detail?id=" + item.id}>
-                                        <li>
+                                    // <NavLink to={"/detail?id=" + item.id}>
+                                        <li onClick={() => this.jumpDetail(item.id)}>
                                         <img className="thumb" src={item.thumb} alt="" />
                                         <b className="title">{item.title}</b>
                                         <h4 className="content">
@@ -100,7 +105,7 @@ class List extends Component<any, any>  {
                                             <span>{item.user_look}</span>
                                         </span>
                                     </li>
-                                    </NavLink>
+                                    // </NavLink>
                                 )
                             })
                         }

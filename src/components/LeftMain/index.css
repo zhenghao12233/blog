@@ -248,12 +248,15 @@
      margin-top: 10px;
  }
  .skill_content_box > ul li .content{
-    display:-webkit-box;
+    /* display:-webkit-box;
     -webkit-line-clamp:3;
-    -webkit-box-orient:vertical;
+    -webkit-box-orient:vertical; */
     overflow:hidden;
     font-size: 14px;
     color: #999;
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
  }
  .skill_content_box > ul li .like {
      float: right;

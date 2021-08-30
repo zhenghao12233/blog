@@ -157,6 +157,18 @@ class LeftMain extends Component<any, any> {
             timer: null
         })
     }
+    jumpDetail = (id:number) => {
+        console.log(this.props)
+        console.log(window.location.origin)
+        // this.props.history.push({
+        //     pathnam: "/detail",
+        //     query: {
+        //         id
+        //     }
+        // })
+        window.sessionStorage.setItem("aid", String(id))
+        window.open(window.location.origin + "/#/detail?id=" + id);
+    }
 
     render() {
         const obj = {
@@ -171,7 +183,7 @@ class LeftMain extends Component<any, any> {
                         {
                             this.state.thumbList.map((item: any) => {
                                 return (
-                                    <li>
+                                    <li onClick={() => this.jumpDetail(item.id)}>
                                         <img src={item.thumb || 'http://47.108.172.171:5000/public/img_26f40dd26.png'} alt="轮播图" />
                                     </li>
                                 )
@@ -195,7 +207,7 @@ class LeftMain extends Component<any, any> {
                         {
                             this.state.smallThumbList.map((item: any,index: number) => {
                                 return (
-                                    <li>
+                                    <li onClick={() => this.jumpDetail(item.id)}>
                                         <span>{item.title}</span>
             
                                         <img src={item.thumb || 'http://47.108.172.171:5000/public/img_26f40dd26.png'} alt="" />

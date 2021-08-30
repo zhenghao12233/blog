@@ -13,6 +13,7 @@ import FeedBack from '../FeedBack/FeedBack';
 import SkillShare from '../../components/SkillShare/SkillShare';
 import CountSkill from '../../components/CountSkill/CountSkill';
 import ProcessLife from '../../components/ProcessLife/ProcessLife';
+import { jumpUrl } from '../../utils/config';
 
 import wechat from './wechat.jpg'
 
@@ -116,7 +117,8 @@ const Home = (props: any) => {
     const onSearch = (e: any) => {
         console.log(e)
         setSlideSearch(!slideSearch)
-        props.history.push("/list?search=" + e)
+        window.open(window.location.origin + "/#/list?search=" +e);
+        // props.history.push("/list?search=" + e)
         window.sessionStorage.setItem("search",e)
     }
 

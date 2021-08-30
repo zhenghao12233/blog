@@ -46,7 +46,7 @@ class SkillShare extends Component<any, any> {
         console.log(this.props)
         window.sessionStorage.setItem("aid", id)
         // this.props.history.push("/detail?id=" + id)
-        window.open(jumpUrl + "#/detail?id=" + id);
+        window.open(window.location.origin + "/#/detail?id=" + id);
     }
 
     onChange = (page:any,pagesize:any) => {
